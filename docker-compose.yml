@@ -33,6 +33,13 @@ services:
       - ./airflow/plugins:/root/airflow/plugins
       - logs:/usr/local/airflow/logs
 
+  #Запуск Adminer
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080 
+
 # Задав таким образом вольюмы
 # нам не нужно заботиться о том где будет папка
 # В которой они будут лежать

@@ -21,6 +21,8 @@ ARG AIRFLOW_VERSION=2.7.3
 # config файл, это проще и гибче, синтаксис следующий
 # AIRFLOW__{SECTION}__{KEY} конкретные данные нужно искать в документации
 
+#Сохраням ключ Fernet
+ENV AIRFLOW__CORE__FERNET_KEY=nmd6ELKA1yLFV9h0IIkj1Wf5zsQLyoh8QPn317A-abo=
 
 
 # Папка с дагами и плагинами
