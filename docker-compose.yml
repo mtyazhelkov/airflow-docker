@@ -22,6 +22,7 @@ services:
       context: .
       args:
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        FERNET_KEY: ${FERNET_KEY}
     restart: always
     # Определяет порядок запуска сервисов
     # Будем ждать postgres

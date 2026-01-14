@@ -1,8 +1,7 @@
 # Возьмем за основу данный образ
-# Данная команда установит уже готвоый образ с python:3.8
+# Данная команда установит уже готвоый образ с python:3.10
 # После чего поверх него установит дополнительные 
 # команды которые мы укажем дальше
-#FROM python:3.8
 FROM python:3.10
  
 
@@ -21,8 +20,9 @@ ARG AIRFLOW_VERSION=2.7.3
 # config файл, это проще и гибче, синтаксис следующий
 # AIRFLOW__{SECTION}__{KEY} конкретные данные нужно искать в документации
 
-#Сохраням ключ Fernet
-ENV AIRFLOW__CORE__FERNET_KEY=nmd6ELKA1yLFV9h0IIkj1Wf5zsQLyoh8QPn317A-abo=
+#Сохраням ключ Fernet. Он пробрасывается из файла .env в аргументы docker-compose
+ARG FERNET_KEY
+ENV AIRFLOW__CORE__FERNET_KEY=${FERNET_KEY}
 
 
 # Папка с дагами и плагинами
@@ -33,9 +33,8 @@ ENV AIRFLOW__CORE__PLUGINS_FOLDER=/usr/local/airflow/plugins
 ENV AIRFLOW__CORE__EXECUTOR=LocalExecutor
 
 ARG POSTGRES_PASSWORD 
-# Убрал подключение в docker-compose
+# Пароль от базы метаданных postgres пробрасываются из аргументов docker-compose из файла .env
 ENV AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:${POSTGRES_PASSWORD}@postgres:5432/airflow
-#ENV AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:ghwf94hfw8@postgres:5432/airflow
 
 # Отключим примеры кода
 ENV AIRFLOW__CORE__LOAD_EXAMPLES=False
