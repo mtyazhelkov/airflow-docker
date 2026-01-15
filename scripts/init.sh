@@ -14,5 +14,5 @@ airflow users create \
           --email admin@example.org \
           -p 12345
 
-# Запуск шедулера и вебсервера
+# Запуск шедулера и вебсервера 
 airflow scheduler & airflow webserver
