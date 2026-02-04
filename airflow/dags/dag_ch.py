@@ -9,12 +9,12 @@ dag=DAG(
     max_active_runs=1
 )
 
-create_table=ClickHouseOperator(
+insert_data=ClickHouseOperator(
     task_id='create_table',
-    sql='INSERT INTO test (id, name) VALUES(2,'Anton')',
+    sql='''INSERT INTO test (id, name) VALUES(2,'Anton');''',
     clickhouse_conn_id='clickhouse_default',
     dag=dag,
     )
 
-create_table
+insert_data
 
