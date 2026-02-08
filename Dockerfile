@@ -50,6 +50,9 @@ RUN pip install SQLAlchemy==1.4.49
 #RUN pip install airflow-code-editor
 RUN pip install black fs-s3fs fs-gcsfs
 
+# Установка плагина ClickHouse
+RUN pip install airflow-clickhouse-plugin
+
 
 # Устанваливаем доп пакеты
 RUN pip install psycopg2-binary
