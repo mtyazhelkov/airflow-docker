@@ -1,7 +1,8 @@
 from airflow import DAG
 from airflow.utils.dates import days_ago
+from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow_clickhouse_plugin.hooks.clickhouse import ClickHouseHook
-
+    
 dag=DAG(
     'test',
     schedule_interval='@daily',
