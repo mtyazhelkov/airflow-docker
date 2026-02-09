@@ -15,7 +15,7 @@ dag=DAG(
 )
 
 insert_data = ClickHouseOperator(
-    task_id='create_table',
+    task_id='insert_data',
     sql='''INSERT INTO test (id, name) VALUES(2,'Anton');''',
     clickhouse_conn_id='clickhouse_default',
     dag=dag,
