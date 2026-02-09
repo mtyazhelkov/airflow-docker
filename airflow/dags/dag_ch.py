@@ -20,7 +20,7 @@ def insert_into_ch():
     
     #sql
     ch_hook=ClickHouseHook(clickhouse_conn_id='clickhouse_default')
-    ch_hook.execute('INSERT INTO test(id,name) VALUES(3, 'MARIA')')
+    ch_hook.execute('''INSERT INTO test(id,name) VALUES(3, 'MARIA')''')
 
 #ClickhouseOperator. For sql queries only 
 insert_data_chOperator = ClickHouseOperator(
