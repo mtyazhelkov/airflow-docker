@@ -9,6 +9,8 @@ from airflow_clickhouse_plugin.hooks.clickhouse import ClickHouseHook
 import sys
 import os
 
+# Явно добавляем путь к папке, где лежит папка scripts
+sys.path.insert(0, '/project')
 from scripts.test_script import insert_into_ch_new
  
 
