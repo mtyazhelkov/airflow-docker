@@ -6,6 +6,12 @@ from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow_clickhouse_plugin.operators.clickhouse import ClickHouseOperator
 from airflow_clickhouse_plugin.hooks.clickhouse import ClickHouseHook
 
+import sys
+import os
+
+# Поднимаемся на уровень выше от папки dags
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from scripts.test_script import insert_into_ch_new
  
 
 dag=DAG(
@@ -36,6 +42,12 @@ insert_data_pyOperator=PythonOperator(
     dag=dag,
 )
 
+insert_data_pyOperator_new=PythonOperator(
+    task_id='insert_data_new_py',
+    python_callable=insert_into_ch_new,
+    dag=dag,
+)
 
-insert_data_chOperator>>insert_data_pyOperator
+
+insert_data_chOperator>>insert_data_pyOperator>>insert_data_pyOperator_new
 
