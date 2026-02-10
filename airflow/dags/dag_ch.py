@@ -11,7 +11,7 @@ import os
 
 # Явно добавляем путь к папке, где лежит папка scripts
 sys.path.insert(0, '/project')
-from scripts.test_script import insert_into_ch_new
+from scripts.test_sript import insert_into_ch_new
  
 
 dag=DAG(
