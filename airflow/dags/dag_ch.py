@@ -9,8 +9,6 @@ from airflow_clickhouse_plugin.hooks.clickhouse import ClickHouseHook
 import sys
 import os
 
-# Поднимаемся на уровень выше от папки dags
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from scripts.test_script import insert_into_ch_new
  
 
