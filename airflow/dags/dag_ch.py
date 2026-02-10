@@ -18,6 +18,7 @@ dag=DAG(
     'test',
     schedule_interval='@daily',
     start_date=datetime(2024,1,1),
+    end_date=datetime(2027,1,1),
     max_active_runs=1
 )
 
