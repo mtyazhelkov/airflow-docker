@@ -31,11 +31,16 @@ services:
     # Пробрасываем порты
     ports:
       - 8001:8080
+    # Добавляем путь /project в PYTHONPATH, чтобы Python видел папку scripts
+    environment:
+      - PYTHONPATH=${PYTHONPATH}:/project
     # Пробрасываем папку с дагами
     volumes:
       - ./airflow/dags:/usr/local/airflow/dags
       - ./airflow/plugins:/root/airflow/plugins
+      - ./scripts:/project/scripts
       - logs:/usr/local/airflow/logs
+    entrypoint: ["/bin/bash", "/project/scripts/init.sh"]
   #Запуск Adminer
   adminer:
     image: adminer
