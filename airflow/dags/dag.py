@@ -8,3 +8,4 @@ t1 = DummyOperator(task_id='task_1', dag=dag)
 t2 = DummyOperator(task_id='task_2',dag=dag)
 
 t1>> t2
+

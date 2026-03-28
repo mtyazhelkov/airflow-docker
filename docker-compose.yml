@@ -14,6 +14,11 @@ services:
       - 5434:5432
     volumes:
       - pgdata_student:/var/lib/postgresql/data/18/main
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   # Airflow в отдельном контейнере
   airflow:
@@ -41,12 +46,24 @@ services:
       - ./scripts:/project/scripts
       - logs:/usr/local/airflow/logs
     entrypoint: ["/bin/bash", "/project/scripts/init.sh"]
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        
   #Запуск Adminer
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080 
+
+    logging:
+        driver: "json-file"
+        options:
+          max-size: "10m"
+          max-file: "3"
 
 # Задав таким образом вольюмы
 # нам не нужно заботиться о том где будет папка
