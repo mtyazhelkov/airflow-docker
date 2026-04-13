@@ -15,7 +15,7 @@ from scripts.test_sript import insert_into_ch_new
  
 
 dag=DAG(
-    'test',
+    'test_2',
     schedule_interval='@daily',
     start_date=days_ago(1),
     #end_date=datetime(2027,1,1),
