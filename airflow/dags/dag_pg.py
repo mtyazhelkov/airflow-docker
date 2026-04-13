@@ -27,7 +27,7 @@ def insert_into_pg():
     
     #sql
     pg_hook=PostgresHook(clickhouse_conn_id='postgres_new')
-    pg_run.execute('''insert into test_pg (id, user_name) values VALUES(5, 'Juanna')''')
+    pg_hook.run('''insert into test_pg (id, user_name) values VALUES(5, 'Juanna')''')
 
 
 insert_data_pyOperator=PythonOperator(
