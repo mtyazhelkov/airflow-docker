@@ -6,7 +6,7 @@ services:
     image: postgres
     # Задаем глобальные переменные для доступа к PG, пароль убираем в файл .env
     environment:
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_PASSWORD=${AIRFLOW_DB_PASS}
       - POSTGRES_USER=airflow
       - POSTGRES_DB=airflow
     restart: always
@@ -26,7 +26,7 @@ services:
     build: 
       context: .
       args:
-        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        POSTGRES_PASSWORD: ${AIRFLOW_DB_PASS}
         FERNET_KEY: ${FERNET_KEY}
     restart: always
     # Определяет порядок запуска сервисов

@@ -6,13 +6,14 @@ from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow_clickhouse_plugin.operators.clickhouse import ClickHouseOperator
 from airflow_clickhouse_plugin.hooks.clickhouse import ClickHouseHook
 
+
 import sys
 import os
 
 # Явно добавляем путь к папке, где лежит папка scripts
 sys.path.insert(0, '/project')
 from scripts.test_sript import insert_into_ch_new
- 
+
 
 dag=DAG(
     'test_2',
@@ -26,8 +27,8 @@ def insert_into_pg():
     #Здесь может быть питон код
     
     #sql
-    pg_hook=PostgresHook(clickhouse_conn_id='postgres_new')
-    pg_hook.run('''insert into test_pg (id, user_name) values VALUES(5, 'Juanna')''')
+    pg_hook=PostgresHook(postgres_conn_id='postgres_new')
+    pg_hook.run('''insert into test_pg (id, user_name) VALUES(5, 'Juanna')''')
 
 
 insert_data_pyOperator=PythonOperator(
