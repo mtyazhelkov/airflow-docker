@@ -13,7 +13,7 @@ sys.path.insert(0, '/project')
 from scripts.departure_flights import departure_flights
 
 with DAG(
-    'test_2',
+   'flights',
     schedule_interval='@daily',
     start_date=days_ago(1),
     #end_date=datetime(2027,1,1),
