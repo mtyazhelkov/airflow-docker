@@ -1,6 +1,6 @@
 from airflow.decorators import task
-from scripts.class_download import DownloadFlightsData
-from scripts.class_token import TokenManager
+#from scripts.class_download import DownloadFlightsData
+#from scripts.class_token import TokenManager
 from datetime import datetime, timedelta, time
 
 import sys
@@ -11,6 +11,8 @@ sys.path.insert(0, '/project')
 
 #@task
 def arrivals_flights():
+     from scripts.class_download import DownloadFlightsData
+     from scripts.class_token import TokenManager
     
      # 1. Получаем дату вчерашнего дня
      yesterday_dt = datetime.now().date() - timedelta(days=1)

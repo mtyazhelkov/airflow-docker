@@ -1,6 +1,6 @@
 from airflow.decorators import task
-from scripts.class_download import DownloadFlightsData
-from scripts.class_token import TokenManager
+#from scripts.class_download import DownloadFlightsData
+#from scripts.class_token import TokenManager
 from datetime import datetime, timedelta, time
 
 import sys
