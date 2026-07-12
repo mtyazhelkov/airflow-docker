@@ -15,6 +15,7 @@ sys.path.insert(0, '/project')
 class DownloadFlightsData:
     def __init__(self, URL, query, batch_size):
         #Вызываю класс TokenManager, создав его экземпляр внутри DownloadFlightsData 
+        from scripts.class_token import TokenManager
         self.tokens=TokenManager()   
         self.URL=URL
         self.query=query

@@ -31,7 +31,10 @@ class TokenManager:
 
         #conn.host=https://opensky-network.org
         #Формируется полный путь host из connection + путь
-        TOKEN_URL=f"{conn.host}/auth/realms/opensky-network/protocol/openid-connect/token"
+        #TOKEN_URL=f"{conn.host}/auth/realms/opensky-network/protocol/openid-connect/token"
+
+        host = conn.host.replace("https://", "").replace("http://", "")
+        TOKEN_URL = f"https://{host}/auth/realms/opensky-network/protocol/openid-connect/token"
 
         #берем client_id из json extra, если нет, то из login
         #client_id = conn.extra_dejson.get('client_id', conn.login)

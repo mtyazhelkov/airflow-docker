@@ -3,7 +3,7 @@ from airflow.utils.dates import days_ago
 from datetime import datetime
 from airflow.operators.python import PythonOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
-from airflow_clickhouse_plugin.operators.clickhouse import ClickHouseOperator
+#from airflow_clickhouse_plugin.operators.clickhouse import ClickHouseOperator
 from airflow_clickhouse_plugin.hooks.clickhouse import ClickHouseHook
 
 import sys
@@ -30,11 +30,11 @@ def insert_into_ch():
     ch_hook.execute('''INSERT INTO test(id,name) VALUES(3, 'MARIA')''')
 
 #ClickhouseOperator. For sql queries only 
-insert_data_chOperator = ClickHouseOperator(
-    task_id='insert_data_ch',
-    sql='''INSERT INTO test (id, name) VALUES(1,'Mark');''',
-    clickhouse_conn_id='clickhouse_default',
-    dag=dag,
+#insert_data_chOperator = ClickHouseOperator(
+#    task_id='insert_data_ch',
+#    sql='''INSERT INTO test (id, name) VALUES(1,'Mark');''',
+#    clickhouse_conn_id='clickhouse_default',
+#    dag=dag,
 )
 
 insert_data_pyOperator=PythonOperator(
@@ -50,5 +50,5 @@ insert_data_pyOperator_new=PythonOperator(
 )
 
 
-insert_data_chOperator>>insert_data_pyOperator>>insert_data_pyOperator_new
+insert_data_pyOperator>>insert_data_pyOperator_new
 

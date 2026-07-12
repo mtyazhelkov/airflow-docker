@@ -3,7 +3,7 @@ from airflow.utils.dates import days_ago
 from datetime import datetime
 from airflow.operators.python import PythonOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
-from airflow_clickhouse_plugin.operators.clickhouse import ClickHouseOperator
+#from airflow_clickhouse_plugin.operators.clickhouse import ClickHouseOperator
 from airflow_clickhouse_plugin.hooks.clickhouse import ClickHouseHook
 
 
