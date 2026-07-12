@@ -13,6 +13,18 @@ sys.path.insert(0, '/project')
 from scripts.departure_flights import departure_flights
 from scripts.arrivals_flights import arrivals_flights
 
+# Вспомогательные функции-обертки, чтобы изолировать тяжелый импорт
+def load_and_run_departures():
+    from scripts.departure_flights import departure_flights
+
+    return departure_flights()
+
+
+def load_and_run_arrivals():
+    from scripts.arrivals_flights import arrivals_flights
+
+    return arrivals_flights()
+
 with DAG(
    'flights',
     schedule_interval='5 07 * * *',
@@ -21,7 +33,15 @@ with DAG(
     max_active_runs=1
 ) as dag:
   
-  task1=departure_flights()
-  task2=arrivals_flights()
+  #task1=departure_flights()
+  #task2=arrivals_flights()
+    task1 = PythonOperator(
+        task_id="run_departure_flights",
+        python_callable=load_and_run_departures,  
+    )
 
-task1>>task2
+    task2 = PythonOperator(
+        task_id="run_arrivals_flights",
+        python_callable=load_and_run_arrivals,  
+    )
+    task1>>task2
