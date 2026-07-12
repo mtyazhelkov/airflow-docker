@@ -11,6 +11,8 @@ sys.path.insert(0, '/project')
 
 #@task
 def departure_flights():
+     from scripts.class_download import DownloadFlightsData
+     from scripts.class_token import TokenManager
     
      # 1. Получаем дату вчерашнего дня
      yesterday_dt = datetime.now().date() - timedelta(days=1)
