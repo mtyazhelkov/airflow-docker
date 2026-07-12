@@ -9,7 +9,7 @@ import os
 # Явно добавляем путь к папке, где лежит папка scripts
 sys.path.insert(0, '/project')
 
-@task
+#@task
 def arrivals_flights():
     
      # 1. Получаем дату вчерашнего дня

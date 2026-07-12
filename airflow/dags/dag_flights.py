@@ -44,4 +44,5 @@ with DAG(
         task_id="run_arrivals_flights",
         python_callable=load_and_run_arrivals,  
     )
+    
     task1>>task2
