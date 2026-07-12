@@ -39,6 +39,8 @@ services:
     # Добавляем путь /project в PYTHONPATH, чтобы Python видел папку scripts
     environment:
       - PYTHONPATH=${PYTHONPATH}:/project
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:${AIRFLOW_DB_PASS}@postgres:5432/airflow
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:${AIRFLOW_DB_PASS}@postgres:5432/airflow
     # Пробрасываем папку с дагами
     volumes:
       - ./airflow/dags:/usr/local/airflow/dags

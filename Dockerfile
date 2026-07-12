@@ -35,6 +35,7 @@ ENV AIRFLOW__CORE__EXECUTOR=LocalExecutor
 ARG AIRFLOW_DB_PASS 
 # Пароль от базы метаданных postgres пробрасываются из аргументов docker-compose из файла .env
 ENV AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:${AIRFLOW_DB_PASS}@postgres:5432/airflow
+ENV AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:${AIRFLOW_DB_PASS}@postgres:5432/airflow
 
 # Отключим примеры кода
 ENV AIRFLOW__CORE__LOAD_EXAMPLES=False
