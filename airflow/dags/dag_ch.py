@@ -35,7 +35,7 @@ def insert_into_ch():
 #    sql='''INSERT INTO test (id, name) VALUES(1,'Mark');''',
 #    clickhouse_conn_id='clickhouse_default',
 #    dag=dag,
-)
+#)
 
 insert_data_pyOperator=PythonOperator(
     task_id='insert_data_py',
