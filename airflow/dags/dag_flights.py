@@ -27,7 +27,7 @@ def load_and_run_arrivals():
 
 with DAG(
    'flights',
-    schedule_interval='5 07 * * *',
+    schedule_interval='5 06 * * *',
     start_date=days_ago(1),
     #end_date=datetime(2027,1,1),
     max_active_runs=1
